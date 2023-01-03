@@ -1,13 +1,20 @@
-INSERT INTO tasks (user_id, description, completed, creation_date, completion_date) VALUES
-(1,'buy', 'Milk', FALSE, NULL, NULL),
-(1,'read', 'The 100', FALSE, NULL, NULL),
-(1,'watch','The Godfather', FALSE, NULL, NULL),
-(1,'eat','Pizza', FALSE, NULL, NULL),
-(2,'buy', 'Eggs', FALSE, NULL, NULL),
-(2,'read', 'To Kill a Mockingbird', FALSE, NULL, NULL),
-(2,'watch','The Dark Knight', FALSE, NULL, NULL),
-(2,'eat','Sushi', FALSE, NULL, NULL),
+-- INSERT INTO tasks (category, description, completed, creation_date, completion_date) VALUES
+-- (1,'buy', 'Milk', FALSE, NULL, NULL),
+-- (1,'read', 'The 100', FALSE, NULL, NULL),
+-- (1,'watch','The Godfather', FALSE, NULL, NULL),
+-- (1,'eat','Pizza', FALSE, NULL, NULL),
+-- (2,'buy', 'Eggs', FALSE, NULL, NULL),
+-- (2,'read', 'To Kill a Mockingbird', FALSE, NULL, NULL),
+-- (2,'watch','The Dark Knight', FALSE, NULL, NULL),
+-- (2,'eat','Sushi', FALSE, NULL, NULL);
 
+INSERT INTO tasks (category, description, completed, creation_date, completion_date)
+VALUES ('watch','The Dark Knight', FALSE, NULL, NULL)
+RETURNING *;
+
+INSERT INTO tasks (category, description, completed, creation_date, completion_date)
+VALUES ('eat','Sushi', FALSE, NULL, NULL)
+RETURNING *;
 
 
 --Example data that can be added

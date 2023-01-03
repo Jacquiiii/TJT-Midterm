@@ -45,6 +45,10 @@ app.use('/users', usersRoutes);
 const tasksRoutes = require('./routes/tasks');
 app.use('/tasks', tasksRoutes);
 
+app.get('/', (req, res) => {
+  res.render('index');
+});
+
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
@@ -69,14 +73,13 @@ app.post('/tasks', function(req, res) {
     `;
 
   db.query(queryString, values)
-    .then(() => res.send('Success'))
+    .then((result) => console.log(result.rows[0]))
     .catch((err) => res.send(err));
 
 });
 
-app.get('/', (req, res) => {
-  res.render('index');
-});
+// res.send('Success')
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
