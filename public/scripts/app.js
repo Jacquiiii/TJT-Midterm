@@ -10,14 +10,57 @@ $(document).ready(function () {
     return div.innerHTML;
   };
 
+  const $taskSection = $(".tasks-container");
+
+  const loadTasks = () => {
+    $.get("/tasks", (data) => {
+      console.log("data from loadTasks:", data);
+      renderTasks(data);
+    })
+  }
+
+  const renderTasks = (tasks) => {
+    for (const task of tasks) {
+      const $task = createTaskElement(task);
+      $taskSection.prepend($task);
+    }
+  }
+
+  const createTaskElement = function(task) {
+
+    const $task = `
+      <div class="task">
+      <div class="task-content">
+        <li><input type="text" class="text" value="To-do: ${escape(task.description)}" readonly /></li>
+        <li><input type="text" class="text" value="Category: ${escape(task.category)}" readonly /></li>
+      </div>
+      <div class="task-buttons">
+        <button class="edit">Edit</button>
+        <button class="delete">Delete</button>
+        <button class="change-category">Change Category</button>
+      </div>
+      </div>
+      `;
+    return $task;
+  };
+
   const taskContent = $(".new-task-input")
   // const convertedFormData = taskContent.serialize();
   $(".new-task-input").on("submit", (event) => {
     console.log("onclick test");
     event.preventDefault();
     const formData = $(".new-task-input").val();
+
+    if (!formData) {
+      alert("Please wite a task!");
+      return;
+    }
+
     $.post("/tasks", formData, (data) => {
-      console.log("data from /post eventlisterner", data)
+      console.log("data from /post eventlisterner", data);
+      $(".new-task-input").val("");
+      loadTasks();
     });
-  })
+  });
+  loadTasks();
 })
