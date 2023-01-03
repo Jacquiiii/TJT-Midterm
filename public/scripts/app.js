@@ -12,19 +12,37 @@ $(document).ready(function () {
 
   const $taskSection = $(".tasks-container");
 
-  const loadTasks = () => {
-    $.get("/tasks", (data) => {
-      console.log("data from loadTasks:", data);
-      renderTasks(data);
-    })
-  }
+  // const loadTasks = () => {
+  //   $.get("/tasks", (data) => {
+  //     console.log("data from loadTasks:", data);
+  //     renderTasks(data);
+  //   })
+  // }
 
-  const renderTasks = (tasks) => {
-    for (const task of tasks) {
+  const loadTasks = function() {
+
+    $.get('/tasks', (tasks) => {
+      renderTasks(tasks);
+    });
+
+  };
+
+  // const renderTasks = (tasks) => {
+  //   for (const task of tasks) {
+  //     const $task = createTaskElement(task);
+  //     $taskSection.prepend($task);
+  //   }
+  // }
+
+  const renderTasks = function(tasks) {
+    $('.tasks-container').empty();
+
+    for (const task of tasks.tasks) {
       const $task = createTaskElement(task);
-      $taskSection.prepend($task);
+      $('.tasks-container').prepend($task);
     }
-  }
+
+  };
 
   const createTaskElement = function(task) {
 
