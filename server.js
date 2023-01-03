@@ -44,6 +44,15 @@ app.use('/users', usersRoutes);
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
+// working on reroutes... testing
+// const router = require("./routes/tasks");
+// app.use("/tasks", router);
+app.post("/tasks", (req, res) => {
+  const taskFormContent = req.body.tasktext;
+  console.log("testing req.body", req.body);
+  // console.log("testing res", res);
+})
+
 app.get('/', (req, res) => {
   res.render('index');
 });
