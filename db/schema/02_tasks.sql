@@ -3,6 +3,11 @@ DROP TABLE IF EXISTS tasks CASCADE;
 CREATE TABLE tasks (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  username VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  first_name VARCHAR(255) NOT NULL,
+  last_name VARCHAR(255) NOT NULL,
   category VARCHAR(255),
   description TEXT NOT NULL,
   completed BOOLEAN DEFAULT FALSE,
@@ -10,3 +15,5 @@ CREATE TABLE tasks (
   completion_date TIMESTAMP
 
 );
+
+
