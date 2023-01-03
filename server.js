@@ -73,7 +73,11 @@ app.post('/tasks', function(req, res) {
     `;
 
   db.query(queryString, values)
-    .then((result) => console.log(result.rows[0]))
+    .then((result) => {
+      console.log(result.rows[0])
+      res.redirect("/")
+    })
+
     .catch((err) => res.send(err));
 
 });
