@@ -8,6 +8,7 @@ const morgan = require('morgan');
 
 const PORT = process.env.PORT || 8080;
 const app = express();
+const db = require('./db/connection');
 
 app.set('view engine', 'ejs');
 
@@ -51,11 +52,27 @@ app.use('/tasks', tasksRoutes);
 // working on reroutes... testing
 // const router = require("./routes/tasks");
 // app.use("/tasks", router);
-app.post("/tasks", (req, res) => {
-  const taskFormContent = req.body.tasktext;
-  console.log("testing req.body", req.body);
-  // console.log("testing res", res);
-})
+// app.post("/tasks", (req, res) => {
+//   const taskFormContent = req.body.tasktext;
+//   console.log("testing req.body", req.body);
+//   // console.log("testing res", res);
+// })
+
+app.post('/tasks', function(req, res) {
+
+  const category = 'unknown';
+  const values = [category, req.body.tasktext];
+  const queryString = `
+    INSERT INTO tasks (category, description)
+    VALUES ($1, $2)
+    RETURNING *;
+    `;
+
+  db.query(queryString, values)
+    .then(() => res.send('Success'))
+    .catch((err) => res.send(err));
+
+});
 
 app.get('/', (req, res) => {
   res.render('index');
