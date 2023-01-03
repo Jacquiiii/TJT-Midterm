@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="/styles/layout.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/app.js"></script>
+  <script src="/scripts/app.js"></script>
 
 </head>
 
@@ -38,8 +38,8 @@
   <br>
 
     <section class="new-task-form">
-      <form>
-        <input type="text" class="new-task-input" placeholder="Create a new task"></input>
+      <form method="POST" action="/tasks">
+        <input type="text" class="new-task-input" name="tasktext" placeholder="Create a new task"></input>
         <button class="submit-task-button" type="submit">Submit</button>
       </form>
     </section>
