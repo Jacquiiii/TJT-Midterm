@@ -16,6 +16,14 @@ INSERT INTO tasks (category, description, completed, creation_date, completion_d
 VALUES ('eat','Sushi', FALSE, NULL, NULL)
 RETURNING *;
 
+INSERT INTO tasks (category, description, completed, creation_date, completion_date)
+VALUES ('read','Atomic Habits', FALSE, NULL, NULL)
+RETURNING *;
+
+INSERT INTO tasks (category, description, completed, creation_date, completion_date)
+VALUES ('buy','Headphones', FALSE, NULL, NULL)
+RETURNING *;
+
 
 --Example data that can be added
 -- Buy:
