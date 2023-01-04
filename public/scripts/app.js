@@ -55,7 +55,7 @@ $(document).ready(function () {
       if (task.category === "read") {
         $('.read').prepend($task);
       }
-      else
+      if (task.category === "unknown")
       $('.unknown').prepend($task);
     }
 
