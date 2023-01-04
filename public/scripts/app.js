@@ -35,11 +35,28 @@ $(document).ready(function () {
   // }
 
   const renderTasks = function(tasks) {
-    $('.tasks-container').empty();
+    $('.unknown').empty();
+    $('.watch').empty();
+    $('.eat').empty();
+    $('.buy').empty();
+    $('.read').empty();
 
     for (const task of tasks.tasks) {
       const $task = createTaskElement(task);
-      $('.tasks-container').prepend($task);
+      if (task.category === "watch") {
+        $('.watch').prepend($task);
+      }
+      if (task.category === "eat") {
+        $('.eat').prepend($task);
+      }
+      if (task.category === "buy") {
+        $('.buy').prepend($task);
+      }
+      if (task.category === "read") {
+        $('.read').prepend($task);
+      }
+      else
+      $('.unknown').prepend($task);
     }
 
   };
