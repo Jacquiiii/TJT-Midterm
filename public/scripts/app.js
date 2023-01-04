@@ -55,11 +55,21 @@ $(document).ready(function () {
       <div class="task-buttons">
         <button class="edit">Edit</button>
         <button class="delete">Delete</button>
-        <button class="change-category">Change Category</button>
+        <button class="change-category">Change Category
+        <select>
+          <option value=""> </option>
+          <option value="Buy">Buy</option>
+          <option value="Read"</option>
+          <option value="Eat"</option>
+          <option value="Watch"</option>
+        </select>
+        </button>
       </div>
       </div>
       `;
     return $task;
+
+
   };
 
   const taskContent = $(".new-task-input")
