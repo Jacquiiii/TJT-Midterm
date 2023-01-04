@@ -89,7 +89,7 @@ $(document).ready(function () {
 
   };
 
-  const taskContent = $(".new-task-input")
+  // const taskContent = $(".new-task-input")
   // const convertedFormData = taskContent.serialize();
   $(".new-task-input").on("submit", (event) => {
     console.log("onclick test");
