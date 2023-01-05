@@ -61,6 +61,19 @@ app.get('/', (req, res) => {
 //   console.log("testing req.body", req.body);
 //   // console.log("testing res", res);
 // })
+app.post('/delete', function(req, res) {
+  console.log("delete test!");
+  console.log("delete req!", req.body);
+  // console.log("delete res!", res);
+  const value = [req.body.taskid]
+  const deleteQuery = `
+  DELETE FROM tasks WHERE id = $1;
+  `
+  db.query(deleteQuery, value)
+  .then((result) => {
+    res.redirect("/");
+  })
+})
 
 app.post('/tasks', function(req, res) {
 
