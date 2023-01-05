@@ -86,6 +86,19 @@ app.post('/delete', function(req, res) {
   .catch((err) => res.send(err));
 })
 
+app.post('/change', (req, res) => {
+  console.log("testing req.body", req.body);
+  const value = [req.body.changecategory, req.body.taskid];
+  const changeQuery = `
+  UPDATE tasks SET category = $1
+  WHERE id = $2;
+  `
+  db.query(changeQuery, value)
+    .then((result) => {
+      res.redirect("/");
+    })
+})
+
 
 // receives post request to /login from server side
 app.post('/login', (req, res) => {

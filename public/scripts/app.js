@@ -76,13 +76,17 @@ $(document).ready(function () {
           <button class="delete" type="submit">Delete</button>
         </form>
         <button class="change-category">Change Category
-        <select>
-          <option value=""> </option>
-          <option value="Buy">Buy</option>
-          <option value="Read">Read</option>
-          <option value="Eat">Eat</option>
-          <option value="Watch">Watch</option>
+        <form method="POST" action="/change">
+        <label for="changecategory">update:</label>
+        <select name="changecategory" onchange="this.form.submit();">
+        <option label="" disabled selected></option>
+        <option value="buy">Buy</option>
+        <option value="read">Read</option>
+        <option value="eat">Eat</option>
+        <option value="watch">Watch</option>
         </select>
+        <input type="hidden" name="taskid" value="${task.id}"></input>
+        </form>
         </button>
       </div>
       </div>
