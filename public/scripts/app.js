@@ -117,22 +117,24 @@ $(document).ready(function () {
 
   // const taskContent = $(".new-task-input")
   // const convertedFormData = taskContent.serialize();
-  $(".new-task-input").on("submit", (event) => {
+  $(".new-task-form-data").on("submit", function (event) {
     console.log("onclick test");
     event.preventDefault();
-    const formData = $(".new-task-input").val();
+    const formData = $(this).serialize();
+    const text = $(".new-task-input").val();
 
-    if (!formData) {
-      alert("Please wite a task!");
+    if (!text) {
+      alert("Please write a task!");
       return;
     }
 
     $.post("/tasks", formData, (data) => {
-      console.log("data from /post eventlisterner", data);
+      console.log("data from /post eventlistener", data);
       $(".new-task-input").val("");
       loadTasks();
     });
   });
+
   loadTasks();
 
 })
