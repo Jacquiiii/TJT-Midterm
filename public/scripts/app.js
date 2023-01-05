@@ -71,7 +71,10 @@ $(document).ready(function () {
       </div>
       <div class="task-buttons">
         <button class="edit">Edit</button>
-        <button class="delete">Delete</button>
+        <form method="POST" action="/delete">
+          <input type="hidden" name="taskid" value="${task.id}"/>
+          <button class="delete" type="submit">Delete</button>
+        </form>
         <button class="change-category">Change Category
         <select>
           <option value=""> </option>
@@ -85,11 +88,10 @@ $(document).ready(function () {
       </div>
       `;
     return $task;
-
-
   };
 
-  const taskContent = $(".new-task-input")
+
+  // const taskContent = $(".new-task-input")
   // const convertedFormData = taskContent.serialize();
   $(".new-task-input").on("submit", (event) => {
     console.log("onclick test");

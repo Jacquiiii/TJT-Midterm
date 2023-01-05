@@ -28,9 +28,7 @@
 }
 
 .tasks-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
   padding-top: 2em;
   margin-left: 5em;
   margin-right: 5em;
