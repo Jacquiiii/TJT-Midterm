@@ -1,4 +1,5 @@
-const user = {};
+// object where logged in user data can be stored
+let user = {};
 
 $(document).ready(function () {
 
@@ -18,7 +19,6 @@ $(document).ready(function () {
   // listens for login form submit event and posts data entered in email field
   $('#submit-login').on('submit', (event) => {
     event.preventDefault();
-
     const email = $('.email-input').val();
     const password = $('.password-input').val();
 
@@ -29,11 +29,12 @@ $(document).ready(function () {
       $('.password-input').val('');
       $('.login-button').next('.login-content').slideToggle();
 
+      // adds email to user object so it can be used to display email when logged in
       user.email = email;
 
       // if server sends back loginSuccess as true, name and logout button are displayed on the page
       if (response.loginSuccess) {
-        $('.username').text(email);
+        $('.user').text(email);
         $('.header-right').hide();
         $('.header-right-logged-in').show();
       }
@@ -49,21 +50,12 @@ $(document).ready(function () {
     $.post('/logout').done((response) => {
       // if server sends back loginSuccess as false, login/register are displayed on the page
       if (!response.loginSuccess) {
-        $('.username').text('');
-        user = {};
+        // $('.user').text('');
         $('.header-right-logged-in').hide();
         $('.header-right').show();
+        user = {};
       }
     });
   });
-
-
-  // if (document.cookie.includes('loggedIn=true')) {
-  //   // Show the logged-in header
-  //   $('.header-right-logged-in').show();
-  // } else {
-  //   // Show the logged-out header
-  //   $('.header-right').show();
-  // }
 
 });

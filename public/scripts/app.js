@@ -117,7 +117,7 @@ $(document).ready(function () {
 
   // const taskContent = $(".new-task-input")
   // const convertedFormData = taskContent.serialize();
-  $(".new-task-form-realform").on("submit", function (event) {
+  $(".new-task-form-data").on("submit", function (event) {
     console.log("onclick test");
     event.preventDefault();
     const formData = $(this).serialize();

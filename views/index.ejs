@@ -13,13 +13,12 @@
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
 
-  <!-- fonts (Jacqui) -->
+  <!-- fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300&display=swap" rel="stylesheet">
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script src="/scripts/app.js"></script>
   <script src="/scripts/login.js"></script>
-
 </head>
 
 <body>
@@ -30,12 +29,12 @@
       <span>Smart ToDo List</span>
     </div>
 
+    <!-- displayed when user is not logged in -->
     <div class="header-right">
-      <!-- <button class="login" type="submit">Login</button>
-      <button class="register" type="submit">Register</button> -->
       <ul>
         <li>
           <button class="login-button" type="submit">Log in</button>
+          <!-- form toggles when button is clicked -->
           <div class="login-content">
             <form method="POST" action="/login" id="submit-login">
               <fieldset class="inputs">
@@ -51,6 +50,7 @@
 
         <li>
           <button class="signup-button" type="submit">Signup</button>
+          <!-- form toggles when button is clicked -->
           <div class="signup-content">
             <form>
               <fieldset class="inputs">
@@ -66,7 +66,6 @@
       </ul>
     </div>
 
-
     <!-- gets displayed when user is logged in -->
     <div class="header-right-logged-in">
       <span class='user'></span>
@@ -80,7 +79,7 @@
   <br>
 
     <section class="new-task-form">
-      <form method="POST" action="/tasks" class="new-task-form-realform">
+      <form method="POST" action="/tasks" class="new-task-form-data">
         <input type="text" class="new-task-input" name="tasktext" placeholder="Create a new task"></input>
         <button class="submit-task-button" type="submit">Submit</button>
       </form>
@@ -108,10 +107,8 @@
       <div class="unknown">
       </div>
 
-
-
     </article>
-    </script>
+
   </main>
 </body>
 </html>
