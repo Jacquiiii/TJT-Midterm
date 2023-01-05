@@ -47,6 +47,10 @@ app.use('/users', usersRoutes);
 const tasksRoutes = require('./routes/tasks');
 app.use('/tasks', tasksRoutes);
 
+// login routes
+const loginRoutes = require('./routes/login');
+app.use('/login', loginRoutes);
+
 app.get('/', (req, res) => {
   res.render('index');
 });
@@ -123,6 +127,7 @@ app.post('/tasks', function(req, res) {
           VALUES ($1, $2)
           RETURNING *;
           `;
+
         db.query(queryString, values)
           .then((result) => {
             console.log(result.rows[0]);

@@ -108,4 +108,5 @@ $(document).ready(function () {
     });
   });
   loadTasks();
+
 })

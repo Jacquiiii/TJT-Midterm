@@ -18,6 +18,7 @@
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script src="/scripts/app.js"></script>
+  <script src="/scripts/login.js"></script>
 
 </head>
 
@@ -29,8 +30,41 @@
       <span>Smart BREW List</span>
     </div>
     <div class="header-right">
-      <button class="login" type="submit">Login</button>
-      <button class="register" type="submit">Register</button>
+      <!-- <button class="login" type="submit">Login</button>
+      <button class="register" type="submit">Register</button> -->
+
+      <ul>
+        <li>
+          <button class="login-button" type="submit">Log in</button>
+          <div class="login-content">
+            <form method="POST" action="/login" id="submit-login">
+              <fieldset class="inputs">
+                <input type="email" class="email-input" placeholder="Your email address" required>
+                <input type="password" class="password-input" placeholder="Password" required>
+              </fieldset>
+              <fieldset class="actions">
+                <button type="submit">Log in</button>
+              </fieldset>
+            </form>
+          </div>
+        </li>
+
+        <li>
+          <button class="signup-button" type="submit">Signup</button>
+          <div class="signup-content">
+            <form>
+              <fieldset class="inputs">
+                <input type="email" placeholder="Enter email adress" required>
+                <input type="password" placeholder="Enter password" required>
+              </fieldset>
+              <fieldset class="actions">
+                <button type="submit">Signup</button>
+              </fieldset>
+            </form>
+          </div>
+        </li>
+      </ul>
+
     </div>
   </nav>
 

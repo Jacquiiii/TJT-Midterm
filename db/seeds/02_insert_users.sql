@@ -1,7 +1,9 @@
+INSERT INTO users (username, password, first_name, last_name, email)
+VALUES ('Alice Cooper', 'MadHatter', 'Alice', 'Cooper', 'alice@wonderland.ca');
 
-INSERT INTO users (username, email, password) VALUES ('Alice Cooper', 'alice@wonderland.ca', 'password', 'MadHatter');
-INSERT INTO users (username, email, password) VALUES ('Kira Knight Lee', 'kira@caribbean.ca', 'password', 'JarOfDirt');
+INSERT INTO users (username, password, first_name, last_name, email)
+VALUES ('Kira Knight Lee', 'Kira', 'Lee', 'JarOfDirt', 'kira@caribbean.ca');
 
-
-INSERT INTO todos (task, category, completed) VALUES ('Buy milk', 'Buy', false);
+INSERT INTO todos (task, category, completed)
+VALUES ('Buy milk', 'Buy', false);
 

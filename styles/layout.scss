@@ -32,3 +32,35 @@ nav {
 .header-right {
   margin-top: 0.75em;
 }
+
+
+// login and signup button --------
+ul {
+  list-style: none;
+  position: relative;
+  display: flex;
+}
+
+.login-content, .signup-content {
+  display: none;
+  position: absolute;
+  z-index: 999;
+  padding: 1em;
+  right: 0;
+}
+
+.login-button, .signup-button {
+  margin: 0.5em;
+  background-color: transparent;
+  border: transparent;
+  font-size: 1em;
+  color: rgb(94, 26, 94);
+  cursor: pointer;
+}
+
+.inputs, .actions {
+  background: white;
+  border: transparent;
+}
+// --------------------------------
+
