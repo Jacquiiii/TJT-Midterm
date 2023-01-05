@@ -71,8 +71,11 @@ $(document).ready(function () {
       </div>
       <div class="task-buttons">
         <button class="edit">Edit</button>
-        <button class="delete">Delete</button>
-        <button class="change-category dropdown-button">Change Category
+        <form method="POST" action="/delete">
+          <input type="hidden" name="taskid" value="${task.id}"/>
+          <button class="delete" type="submit">Delete</button>
+        </form>
+        <button class="change-category">Change Category
         <select>
           <option value=""> </option>
           <option value="Buy">Buy</option>
@@ -88,7 +91,7 @@ $(document).ready(function () {
   };
 
    //code to apply change of option chosen - not functional yet
-  
+
   // const selectElement = document.querySelector('.change-category select');
 
   // selectElement.addEventListener('change', (event) => {
@@ -111,7 +114,8 @@ $(document).ready(function () {
   //   }
   // });
 
-  const taskContent = $(".new-task-input")
+
+  // const taskContent = $(".new-task-input")
   // const convertedFormData = taskContent.serialize();
   $(".new-task-input").on("submit", (event) => {
     console.log("onclick test");

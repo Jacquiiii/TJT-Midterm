@@ -27,6 +27,8 @@ app.use(
 );
 app.use(express.static('public'));
 
+const { categoryCheck, quickstart } = require('./api.js');
+
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const userApiRoutes = require('./routes/users-api');
@@ -61,28 +63,93 @@ app.get('/', (req, res) => {
 //   console.log("testing req.body", req.body);
 //   // console.log("testing res", res);
 // })
+app.post('/delete', function(req, res) {
+  console.log("delete test!");
+  console.log("delete req!", req.body);
+  // console.log("delete res!", res);
+  const value = [req.body.taskid]
+  const deleteQuery = `
+  DELETE FROM tasks WHERE id = $1;
+  `
+  db.query(deleteQuery, value)
+  .then((result) => {
+    res.redirect("/");
+  })
+  .catch((err) => res.send(err));
+})
+
+// app.post('/tasks', function(req, res) {
+
+//   const category = 'unknown';
+//   const values = [category, req.body.tasktext];
+//   const queryString = `
+//     INSERT INTO tasks (category, description)
+//     VALUES ($1, $2)
+//     RETURNING *;
+//     `;
+
+//   db.query(queryString, values)
+//     .then((result) => {
+//       console.log(result.rows[0])
+//       res.redirect("/")
+//     })
+
+//     .catch((err) => res.send(err));
+
+// });
+
 
 app.post('/tasks', function(req, res) {
 
-  const category = 'unknown';
-  const values = [category, req.body.tasktext];
-  const queryString = `
-    INSERT INTO tasks (category, description)
-    VALUES ($1, $2)
-    RETURNING *;
-    `;
+  // synchronous check without api checks if input includes certain words matching specific categories and adds to database if one matches
+  const firstCheck = categoryCheck(req.body.tasktext);
 
-  db.query(queryString, values)
-    .then((result) => {
-      console.log(result.rows[0])
-      res.redirect("/")
-    })
+  if (firstCheck) {
+    const category = firstCheck;
+    const values = [category, req.body.tasktext];
+    const queryString = `
+      INSERT INTO tasks (category, description)
+      VALUES ($1, $2)
+      RETURNING *;
+      `;
 
-    .catch((err) => res.send(err));
+    db.query(queryString, values)
+      .then((result) => {
+        console.log(result.rows[0]);
+        res.redirect("/");
+      })
+      .catch((err) => res.send(err));
+  }
+
+  else {
+    quickstart(req.body.tasktext)
+      .then((result) => {
+        let category = result;
+
+        if (category === undefined) {
+          category = 'unknown';
+        }
+
+        console.log('new test:', category);
+        const values = [category, req.body.tasktext];
+        const queryString = `
+          INSERT INTO tasks (category, description)
+          VALUES ($1, $2)
+          RETURNING *;
+          `;
+        db.query(queryString, values)
+          .then((result) => {
+            console.log(result.rows[0]);
+            res.redirect("/");
+          })
+          .catch((err) => res.send(err));
+        })
+        .catch((err) => res.send(err));
+  }
+
 
 });
 
-// res.send('Success')
 
 
 app.listen(PORT, () => {
