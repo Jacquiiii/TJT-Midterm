@@ -20,12 +20,17 @@ $(document).ready(function () {
     const email = $('.email-input').val();
     const password = $('.password-input').val();
 
-    $.post('/login', { email, password }, () => {
+    $.post('/login', { email, password }, (response) => {
 
       // removes content in the email/password fields and slides the form back up after submit
       $('.email-input').val('');
       $('.password-input').val('');
       $('.login-button').next('.login-content').slideToggle();
+
+      if (response.loginSuccess) {
+        $('.header-right').hide();
+        $('.header-right-logged-in').show();
+      }
     });
 
   });

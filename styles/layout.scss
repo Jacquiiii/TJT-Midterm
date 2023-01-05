@@ -33,6 +33,11 @@ nav {
   margin-top: 0.75em;
 }
 
+.header-right-logged-in {
+  display: none;
+  margin-top: 0.75em;
+}
+
 
 // login and signup button --------
 ul {
@@ -49,7 +54,7 @@ ul {
   right: 0;
 }
 
-.login-button, .signup-button {
+.login-button, .signup-button, .logout-button {
   margin: 0.5em;
   background-color: transparent;
   border: transparent;
