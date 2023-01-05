@@ -29,9 +29,6 @@ async function quickstart(text) {
   const classificationModelOptions = { v2Model: { contentCategoriesVersion: 'V2'} };
   const [classification] = await client.classifyText({ document, classificationModelOptions });
 
-  console.log('test1: ', classification);
-  console.log('test2: ', classification.categories);
-
   // Updated to true if the text matches a certain category
   let eat, watch, read, buy = false;
 

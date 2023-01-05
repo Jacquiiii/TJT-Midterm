@@ -28,6 +28,7 @@ app.use(
 app.use(express.static('public'));
 
 const { categoryCheck, quickstart } = require('./api.js');
+const userEmailQueries = require('./db/queries/users');
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
@@ -47,13 +48,11 @@ app.use('/users', usersRoutes);
 const tasksRoutes = require('./routes/tasks');
 app.use('/tasks', tasksRoutes);
 
-// login routes
-const loginRoutes = require('./routes/login');
-app.use('/login', loginRoutes);
-
 app.get('/', (req, res) => {
   res.render('index');
 });
+
+
 
 // Home page
 // Warning: avoid creating more routes in this file!
@@ -67,6 +66,8 @@ app.get('/', (req, res) => {
 //   console.log("testing req.body", req.body);
 //   // console.log("testing res", res);
 // })
+
+
 app.post('/delete', function(req, res) {
   console.log("delete test!");
   console.log("delete req!", req.body);
@@ -82,25 +83,23 @@ app.post('/delete', function(req, res) {
   .catch((err) => res.send(err));
 })
 
-// app.post('/tasks', function(req, res) {
 
-//   const category = 'unknown';
-//   const values = [category, req.body.tasktext];
-//   const queryString = `
-//     INSERT INTO tasks (category, description)
-//     VALUES ($1, $2)
-//     RETURNING *;
-//     `;
+// receives email form data from login submit event (post request on client side)and checks it against the database
+app.post('/login', (req, res) => {
 
-//   db.query(queryString, values)
-//     .then((result) => {
-//       console.log(result.rows[0])
-//       res.redirect("/")
-//     })
+  userEmailQueries.getUserByEmail(req.body.email)
+    .then(data => {
+      // If the email exists, show a greeting message with the user's name, else send error message
+      if (data.email === req.body.email) {
+        console.log('email is correct!');
+        res.send(`Hello, ${data.name}! You are now logged in.`);
+      } else {
+        res.status(404).send('Email does not exist');
+      }
+    })
+    .catch((err) => console.log(err));
 
-//     .catch((err) => res.send(err));
-
-// });
+});
 
 
 app.post('/tasks', function(req, res) {
@@ -125,6 +124,7 @@ app.post('/tasks', function(req, res) {
       .catch((err) => res.send(err));
   }
 
+  // asynch check calls Google Natural Language API and checks input against response data to determine if it could fall into one of those categories
   else {
     quickstart(req.body.tasktext)
       .then((result) => {
@@ -152,9 +152,24 @@ app.post('/tasks', function(req, res) {
         .catch((err) => res.send(err));
   }
 
-
 });
 
+// previous version of the above without category checks (remove when project is ready)
+// app.post('/tasks', function(req, res) {
+//   const category = 'unknown';
+//   const values = [category, req.body.tasktext];
+//   const queryString = `
+//     INSERT INTO tasks (category, description)
+//     VALUES ($1, $2)
+//     RETURNING *;
+//     `;
+//   db.query(queryString, values)
+//     .then((result) => {
+//       console.log(result.rows[0])
+//       res.redirect("/")
+//     })
+//     .catch((err) => res.send(err));
+// });
 
 
 app.listen(PORT, () => {
