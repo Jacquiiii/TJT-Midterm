@@ -5,6 +5,7 @@ require('dotenv').config();
 const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
+const cookieParser = require('cookie-parser'); // delete if we aren't going to use and do npm uninstall cookie-parser
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -26,6 +27,7 @@ app.use(
   })
 );
 app.use(express.static('public'));
+app.use(cookieParser()); // delete if we aren't going to use
 
 const { categoryCheck, quickstart } = require('./api.js');
 const userEmailQueries = require('./db/queries/users');
@@ -84,21 +86,21 @@ app.post('/delete', function(req, res) {
 })
 
 
-// receives email form data from login submit event (post request on client side)and checks it against the database
 app.post('/login', (req, res) => {
-
   userEmailQueries.getUserByEmail(req.body.email)
     .then(data => {
-      // If the email exists, show a greeting message with the user's name, else send error message
+
       if (data.email === req.body.email) {
-        console.log('email is correct!');
-        res.send(`Hello, ${data.name}! You are now logged in.`);
+        // Set a cookie with the user's email
+        res.cookie('email', req.body.email, { maxAge: 900000, httpOnly: true });
+        // Send a response to the client
+        res.send({ message: `Hello, ${data.name}! You are now logged in.`, loginSuccess: true });
       } else {
-        res.status(404).send('Email does not exist');
+        res.send({ message: 'Email does not exist', loginSuccess: false });
       }
+
     })
     .catch((err) => console.log(err));
-
 });
 
 
