@@ -73,6 +73,7 @@ app.post('/delete', function(req, res) {
   .then((result) => {
     res.redirect("/");
   })
+  .catch((err) => res.send(err));
 })
 
 app.post('/tasks', function(req, res) {
