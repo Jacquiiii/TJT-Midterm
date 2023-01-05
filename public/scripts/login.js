@@ -1,3 +1,5 @@
+const user = {};
+
 $(document).ready(function () {
 
   // toggles login form
@@ -27,8 +29,11 @@ $(document).ready(function () {
       $('.password-input').val('');
       $('.login-button').next('.login-content').slideToggle();
 
+      user.email = email;
+
       // if server sends back loginSuccess as true, name and logout button are displayed on the page
       if (response.loginSuccess) {
+        $('.username').text(email);
         $('.header-right').hide();
         $('.header-right-logged-in').show();
       }
@@ -37,17 +42,28 @@ $(document).ready(function () {
   });
 
 
-    // listens for logout button submit event
-    $('.logout-button').on('click', (event) => {
-      event.preventDefault();
+  // listens for logout button submit event
+  $('.logout-button').on('click', (event) => {
+    event.preventDefault();
 
-      $.post('/logout').done((response) => {
-        // if server sends back loginSuccess as false, login/register are displayed on the page
-        if (!response.loginSuccess) {
-          $('.header-right-logged-in').hide();
-          $('.header-right').show();
-        }
-      });
+    $.post('/logout').done((response) => {
+      // if server sends back loginSuccess as false, login/register are displayed on the page
+      if (!response.loginSuccess) {
+        $('.username').text('');
+        user = {};
+        $('.header-right-logged-in').hide();
+        $('.header-right').show();
+      }
     });
+  });
+
+
+  // if (document.cookie.includes('loggedIn=true')) {
+  //   // Show the logged-in header
+  //   $('.header-right-logged-in').show();
+  // } else {
+  //   // Show the logged-out header
+  //   $('.header-right').show();
+  // }
 
 });

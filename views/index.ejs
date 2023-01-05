@@ -69,7 +69,7 @@
 
     <!-- gets displayed when user is logged in -->
     <div class="header-right-logged-in">
-      <span>Welcome, Tammy!</span>
+      <span class='user'></span>
       <button class="logout-button" type="submit">Log out</button>
     </div>
 
@@ -80,7 +80,7 @@
   <br>
 
     <section class="new-task-form">
-      <form method="POST" action="/tasks">
+      <form method="POST" action="/tasks" class="new-task-form-realform">
         <input type="text" class="new-task-input" name="tasktext" placeholder="Create a new task"></input>
         <button class="submit-task-button" type="submit">Submit</button>
       </form>
