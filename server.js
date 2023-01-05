@@ -85,7 +85,7 @@ app.post('/delete', function(req, res) {
   .catch((err) => res.send(err));
 })
 
-
+// receives post request to /login from server side
 app.post('/login', (req, res) => {
   userEmailQueries.getUserByEmail(req.body.email)
     .then(data => {
@@ -101,6 +101,12 @@ app.post('/login', (req, res) => {
 
     })
     .catch((err) => console.log(err));
+});
+
+
+// receives post requst to /logout from server side
+app.post('/logout', (req, res) => {
+  res.send({ message: 'Logout', loginSuccess: false });
 });
 
 
