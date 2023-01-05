@@ -80,6 +80,7 @@ app.post('/delete', function(req, res) {
   `
   db.query(deleteQuery, value)
   .then((result) => {
+    // res.json({status: 'success'});
     res.redirect("/");
   })
   .catch((err) => res.send(err));
@@ -99,6 +100,7 @@ app.post('/change', (req, res) => {
 })
 
 
+// receives post request to /login from server side
 app.post('/login', (req, res) => {
   userEmailQueries.getUserByEmail(req.body.email)
     .then(data => {
@@ -107,7 +109,8 @@ app.post('/login', (req, res) => {
         // Set a cookie with the user's email
         res.cookie('email', req.body.email, { maxAge: 900000, httpOnly: true });
         // Send a response to the client
-        res.send({ message: `Hello, ${data.name}! You are now logged in.`, loginSuccess: true });
+        res.json({ data: data.name, loginSuccess: true });
+
       } else {
         res.send({ message: 'Email does not exist', loginSuccess: false });
       }
@@ -117,8 +120,16 @@ app.post('/login', (req, res) => {
 });
 
 
+// receives post requst to /logout from server side
+app.post('/logout', (req, res) => {
+  res.clearCookie('email');
+  res.send({ message: 'Logout', loginSuccess: false });
+});
+
+
 app.post('/tasks', function(req, res) {
 
+  console.log(req.body);
   // synchronous check without api checks if input includes certain words matching specific categories and adds to database if one matches
   const firstCheck = categoryCheck(req.body.tasktext);
 
@@ -134,7 +145,7 @@ app.post('/tasks', function(req, res) {
     db.query(queryString, values)
       .then((result) => {
         console.log(result.rows[0]);
-        res.redirect("/");
+        res.json({status: 'success'}); // replaced previous redirect
       })
       .catch((err) => res.send(err));
   }
@@ -160,7 +171,7 @@ app.post('/tasks', function(req, res) {
         db.query(queryString, values)
           .then((result) => {
             console.log(result.rows[0]);
-            res.redirect("/");
+            res.json({status: 'success'}); // replaced previous redirect
           })
           .catch((err) => res.send(err));
         })

@@ -13,13 +13,12 @@
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
 
-  <!-- fonts (Jacqui) -->
+  <!-- fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300&display=swap" rel="stylesheet">
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script src="/scripts/app.js"></script>
   <script src="/scripts/login.js"></script>
-
 </head>
 
 <body>
@@ -27,15 +26,19 @@
   <nav>
 
     <div class="header-left">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-checklist" viewBox="0 0 16 16">
+        <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+        <path d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
+      </svg>
       <span>Smart ToDo List</span>
     </div>
 
+    <!-- displayed when user is not logged in -->
     <div class="header-right">
-      <!-- <button class="login" type="submit">Login</button>
-      <button class="register" type="submit">Register</button> -->
       <ul>
         <li>
           <button class="login-button" type="submit">Log in</button>
+          <!-- form toggles when button is clicked -->
           <div class="login-content">
             <form method="POST" action="/login" id="submit-login">
               <fieldset class="inputs">
@@ -51,10 +54,11 @@
 
         <li>
           <button class="signup-button" type="submit">Signup</button>
+          <!-- form toggles when button is clicked -->
           <div class="signup-content">
             <form>
               <fieldset class="inputs">
-                <input type="email" placeholder="Enter email adress" required>
+                <input type="email" placeholder="Enter email address" required>
                 <input type="password" placeholder="Enter password" required>
               </fieldset>
               <fieldset class="actions">
@@ -66,11 +70,9 @@
       </ul>
     </div>
 
-
-    <!-- test code for hidden header right for logged in status -->
-
+    <!-- gets displayed when user is logged in -->
     <div class="header-right-logged-in">
-      <span>Welcome, Tammy!</span>
+      <span class='user'></span>
       <button class="logout-button" type="submit">Log out</button>
     </div>
 
@@ -81,7 +83,7 @@
   <br>
 
     <section class="new-task-form">
-      <form method="POST" action="/tasks">
+      <form method="POST" action="/tasks" class="new-task-form-data">
         <input type="text" class="new-task-input" name="tasktext" placeholder="Create a new task"></input>
         <button class="submit-task-button" type="submit">Submit</button>
       </form>
@@ -109,10 +111,8 @@
       <div class="unknown">
       </div>
 
-
-
     </article>
-    </script>
+
   </main>
 </body>
 </html>
