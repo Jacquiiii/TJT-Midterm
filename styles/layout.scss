@@ -3,15 +3,15 @@
 body,
 html {
   margin: 0;
-  font-family: 'Lexend Deca', sans-serif;
+  font-family: "Lexend Deca", sans-serif;
 }
 
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: #04c7f8;
-  background: linear-gradient(227deg, #bf13dd 0%, #6a0bca 20%, #6c22e4 34%, #7971e7 59%, #2421eb 74%, #6488ec 100%);
+  background: url(https://thumbs.dreamstime.com/b/todo-list-seamless-pattern-universal-background-66678083.jpg);
+  background-size: cover;
   width: 100%;
   color: rgb(34, 32, 34);
 }
@@ -23,10 +23,17 @@ nav {
   padding: 1em;
 }
 
+//Smart ToDo List Title
 .header-left {
   font-size: 2.25em;
-  text-shadow: 2px 2px 6px rgb(54, 10, 54);
-  color: white;
+  color: rgb(255, 255, 255);
+  text-shadow: 16px 22px 11px rgba(0, 54, 136, 0.849);
+}
+
+.bi-card-checklist {
+  fill: rgb(1, 31, 70);
+  width: 48px;
+  height: 48px;
 }
 
 .header-right {
@@ -37,7 +44,6 @@ nav {
   display: none;
   margin-top: 0.75em;
 }
-
 
 // login and signup button --------
 ul {
@@ -54,18 +60,56 @@ ul {
   right: 0;
 }
 
-.login-button, .signup-button, .logout-button {
+.login-button {
   margin: 0.5em;
   background-color: transparent;
   border: transparent;
-  font-size: 1em;
-  color: rgb(94, 26, 94);
+  font-size: 1.15em;
+  color: rgb(251, 253, 252);
   cursor: pointer;
+  font-weight: 500;
+  text-shadow: 0px 0px 5px rgba(255, 255, 255, 1),
+               0px 0px 10px rgba(255, 255, 255, 1),
+			   0px 0px 15px rgba(255, 255, 255, 1),
+			   0px 0px 20px rgb(24, 255, 236),
+			   0px 0px 30px rgb(24, 255, 255),
+			   0px 0px 40px rgb(24, 220, 255),
+			   0px 0px 55px rgb(24, 247, 255),
+			   0px 0px 75px rgb(24, 209, 255);
 }
 
-.inputs, .actions {
-  background: white;
+.signup-button {
+  margin: 0.5em;
+  background-color: transparent;
+  border: transparent;
+  font-size: 1.15em;
+  letter-spacing: 2px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  font-weight: 500;
+  text-shadow: 0px 0px 5px rgba(255, 255, 255, 1),
+               0px 0px 10px rgba(255, 255, 255, 1),
+			   0px 0px 15px rgba(255, 255, 255, 1),
+			   0px 0px 20px rgb(24, 255, 236),
+			   0px 0px 30px rgb(24, 255, 255),
+			   0px 0px 40px rgb(24, 220, 255),
+			   0px 0px 55px rgb(24, 247, 255),
+			   0px 0px 75px rgb(24, 209, 255);
+}
+
+.logout-button {
+  margin: 0.5em;
+  background-color: transparent;
+  border: transparent;
+  font-size: 1.15em;
+  color: rgb(248, 248, 248);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.inputs,
+.actions {
+  background: transparent;
   border: transparent;
 }
 // --------------------------------
-

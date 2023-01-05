@@ -1,3 +1,5 @@
+//orientation
+
 .new-task-form {
   display: flex;
   flex-direction: column;
@@ -23,7 +25,7 @@
   padding: 0.4em;
   border-radius: 0.25em;
   width: 30vw;
-  color: rgb(75, 9, 75);
+  color: rgb(5, 0, 5);
   background-color: white;
 }
 
@@ -34,50 +36,115 @@
   margin-right: 5em;
 }
 
+//task box
 .task {
   display: flex;
   justify-content: space-between;
   background-color: white;
   padding: 1em;
   margin: 1em;
-  border-radius: 0.5em;
+  border-radius: 0.35em;
   width: 80vw;
 }
 
 .task:hover {
-  box-shadow: 0.5em .5em 0.25em darkgrey;
+  box-shadow: rgb(3, 22, 43) 0px 20px 30px -10px;
 }
 
 .text {
   margin-right: 0.4em;
   border: transparent;
-  color: rgb(75, 9, 75);
+  color: rgb(5, 5, 5);
+  font-weight: 600;
 }
 
-.edit, .delete, .submit-task-button, .change-category {
-  border-radius: 0.3em;
-  background-color: rgb(120, 37, 131);
-  border: transparent;
-  padding: 0.4em;
-  cursor: pointer;
-  color: white;
-}
-
-.edit:hover, .delete:hover, .submit-task-button:hover, .change-category:hover {
-  background-color: rgb(149, 80, 158);
-}
-
-.login, .register{
+//login
+.login, {
   border-radius: 0.3em;
   background-color: transparent;
   font-weight: bold;
   border: transparent;
   padding: 0.4em;
   cursor: pointer;
-  color: rgb(75, 9, 75);
+  color: rgb(250, 248, 250);
   font-size: 1.1em;
 }
 
-.login:hover, .register:hover{
+.login:hover, {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+//register
+.register {
+  border-radius: 0.3em;
+  background-color: transparent;
+  font-weight: bold;
+  border: transparent;
+  padding: 0.4em;
+  cursor: pointer;
+  color: rgb(250, 248, 250);
+  font-size: 1.1em;
+}
+
+.register:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+//submit
+.submit-task-button {
+  border-radius: 0.3em;
+  background-color: purple;
+  border: transparent;
+  padding: 0.4em;
+  cursor: pointer;
   color: white;
+}
+
+.submit-task-button:hover {
+  background-color: rgb(18, 156, 53);
+}
+
+//edit
+.edit {
+  border-radius: 0.3em;
+  background-color: rgba(231, 82, 181, 0.603);
+  border: transparent;
+  padding: 0.4em;
+  cursor: pointer;
+  color: white;
+}
+
+.edit:hover {
+  background-color: rgb(252, 252, 3);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.548) 0px 18px 36px -18px inset;
+}
+
+//delete
+.delete {
+  border-radius: 0.3em;
+  background-color: rgb(241, 182, 17);
+  border: transparent;
+  padding: 0.4em;
+  cursor: pointer;
+  color: white;
+}
+
+.delete:hover {
+  background-color: rgb(216, 75, 75);
+  box-shadow: rgba(10, 0, 0, 0.507) 0px 30px 60px -12px inset, rgba(247, 3, 3, 0.808) 0px 18px 36px -18px inset;
+}
+
+//change category
+.change-category {
+  border-radius: 0.3em;
+  background-color: rgb(19, 155, 189);
+  border: transparent;
+  padding: 0.4em;
+  cursor: pointer;
+  color: white;
+}
+
+.change-category:hover {
+  background-color: purple;
+  box-shadow: rgba(0, 0, 255, 0.774) 0px 30px 60px -12px inset, rgba(9, 0, 63, 0.678) 0px 18px 36px -18px inset;
 }
