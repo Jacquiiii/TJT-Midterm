@@ -72,22 +72,44 @@ $(document).ready(function () {
       <div class="task-buttons">
         <button class="edit">Edit</button>
         <button class="delete">Delete</button>
-        <button class="change-category">Change Category
+        <button class="change-category dropdown-button">Change Category
         <select>
           <option value=""> </option>
           <option value="Buy">Buy</option>
-          <option value="Read"</option>
-          <option value="Eat"</option>
-          <option value="Watch"</option>
+          <option value="Read">Read</option>
+          <option value="Eat">Eat</option>
+          <option value="Watch">Watch</option>
         </select>
         </button>
       </div>
       </div>
       `;
     return $task;
-
-
   };
+
+   //code to apply change of option chosen - not functional yet
+  
+  // const selectElement = document.querySelector('.change-category select');
+
+  // selectElement.addEventListener('change', (event) => {
+
+  //   const selectedValue = event.target.value;
+
+  //   switch (selectedValue) {
+  //     case 'Buy':
+  //       // Code to handle the "Buy" option
+  //       break;
+  //     case 'Read':
+  //       // Code to handle the "Read" option
+  //       break;
+  //     case 'Eat':
+  //       // Code to handle the "Eat" option
+  //       break;
+  //     case 'Watch':
+  //       // Code to handle the "Watch" option
+  //       break;
+  //   }
+  // });
 
   const taskContent = $(".new-task-input")
   // const convertedFormData = taskContent.serialize();
