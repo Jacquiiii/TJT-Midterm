@@ -21,7 +21,7 @@ VALUES ('read','Atomic Habits', FALSE, NULL, NULL)
 RETURNING *;
 
 INSERT INTO tasks (category, description, completed, creation_date, completion_date)
-VALUES ('buy','Headphones', FALSE, NULL, NULL)
+VALUES ('buy','Headphones', TRUE, NULL, NULL)
 RETURNING *;
 
 

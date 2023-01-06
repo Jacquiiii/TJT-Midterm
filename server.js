@@ -91,6 +91,7 @@ app.post('/delete', function(req, res) {
   .catch((err) => res.send(err));
 })
 
+
 app.post('/change', (req, res) => {
   console.log("testing req.body", req.body);
   const value = [req.body.category, req.body.taskid];
@@ -109,6 +110,23 @@ app.post('/change', (req, res) => {
     .catch((err) => res.send(err));
 })
 
+// test for complete task
+app.post('/complete', function(req, res) {
+
+  console.log("testing' req.body", req.body);
+  const value = [true, req.body.taskid];
+  const completeQuery = `
+  UPDATE tasks SET completed = $1
+  WHERE id = $2;
+  `
+
+  db.query(completeQuery, value)
+    .then((result) => {
+      res.json({status: 'success'}); // replaced previous redirect
+    })
+    .catch((err) => res.send(err));
+})
+
 
 // receives post request to /login from server side
 app.post('/login', (req, res) => {
@@ -119,7 +137,7 @@ app.post('/login', (req, res) => {
         // Set a cookie with the user's email
         res.cookie('email', req.body.email, { maxAge: 900000, httpOnly: true });
         // Send a response to the client
-        res.json({ data: data.name, loginSuccess: true });
+        res.json({ data: data.first_name, loginSuccess: true });
 
       } else {
         res.send({ message: 'Email does not exist', loginSuccess: false });

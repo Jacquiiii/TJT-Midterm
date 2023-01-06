@@ -41,22 +41,31 @@ $(document).ready(function () {
     $('.buy').empty();
     $('.read').empty();
 
+    // completed test
+    $('.completed-container').empty();
+
     for (const task of tasks.tasks) {
       const $task = createTaskElement(task);
-      if (task.category === "watch") {
+      if (task.category === "watch" && task.completed === false) {
         $('.watch').prepend($task);
       }
-      if (task.category === "eat") {
+      if (task.category === "eat" && task.completed === false) {
         $('.eat').prepend($task);
       }
-      if (task.category === "buy") {
+      if (task.category === "buy" && task.completed === false) {
         $('.buy').prepend($task);
       }
-      if (task.category === "read") {
+      if (task.category === "read" && task.completed === false) {
         $('.read').prepend($task);
       }
-      if (task.category === "unknown")
-      $('.unknown').prepend($task);
+      if (task.category === "unknown" && task.completed === false) {
+        $('.unknown').prepend($task);
+      }
+
+      // completed test
+      if (task.completed === true) {
+        $('.completed-container').prepend($task);
+      }
     }
 
   };
@@ -68,6 +77,9 @@ $(document).ready(function () {
       <div class="task-content">
         <li><input type="text" class="text" value="To-do: ${escape(task.description)}" readonly /></li>
         <li><input type="text" class="text" value="Category: ${escape(task.category)}" readonly /></li>
+
+        <input type="text" class="text" value="Completed status: ${escape(task.completed)}" hidden/>
+
       </div>
       <div class="task-buttons">
         <button class="edit">Edit</button>
@@ -75,6 +87,14 @@ $(document).ready(function () {
           <input type="hidden" name="taskid" />
           <button class="delete" value="${task.id}" >Delete</button>
         </form>
+        </form>
+        </button>
+
+        <form method="POST" action="/complete" class=complete-form>
+          <input type="hidden" name="taskid"/>
+          <button class="complete-button" type="submit" value="${task.id}">Complete</button>
+        </form>
+
         <button class="change-category">Change Category
         <form class="changeform">
         <label for="changecategory">update:</label>
@@ -86,8 +106,6 @@ $(document).ready(function () {
         <option value="watch">Watch</option>
         </select>
         <input type="hidden" name="taskid" value="${task.id}"></input>
-        </form>
-        </button>
       </div>
       </div>
       `;
@@ -161,6 +179,19 @@ $(document).ready(function () {
     $.post("/tasks", formData, (data) => {
       console.log("data from /post eventlistener", data);
       $(".new-task-input").val("");
+      loadTasks();
+    });
+  });
+
+
+  // completed test
+  $(document).on("click", ".complete-button", function (event) {
+    console.log("complete onclick test");
+    event.preventDefault();
+    const formData = { taskid: event.target.value }
+
+    $.post("/complete", formData, (data) => {
+      console.log("complete data from /post eventlistener", data);
       loadTasks();
     });
   });
