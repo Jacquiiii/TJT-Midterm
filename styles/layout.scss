@@ -11,7 +11,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   background: url(https://thumbs.dreamstime.com/b/todo-list-seamless-pattern-universal-background-66678083.jpg);
-  background-size: cover;
+  background-size: 300px;
   width: 100%;
   color: rgb(34, 32, 34);
 }
@@ -26,15 +26,19 @@ nav {
 //Smart ToDo List Title
 .header-left {
   font-size: 2.25em;
-  color: rgb(255, 255, 255);
-  text-shadow: 16px 22px 11px rgba(0, 54, 136, 0.849);
+  font-family: 'Inspiration', cursive;
+  letter-spacing: 4px;
+  font-weight: 900;
+  color: rgb(1, 31, 70);
+  text-shadow: 16px 22px 11px rgba(26, 128, 230, 0.849);
 }
 
 .bi-card-checklist {
-  fill: rgb(1, 31, 70);
+  fill: rgb(7, 82, 156);
   width: 48px;
   height: 48px;
 }
+
 
 .header-right {
   margin-top: 0.75em;
@@ -52,7 +56,8 @@ ul {
   display: flex;
 }
 
-.login-content, .signup-content {
+.login-content,
+.signup-content {
   display: none;
   position: absolute;
   z-index: 999;
@@ -69,13 +74,10 @@ ul {
   cursor: pointer;
   font-weight: 500;
   text-shadow: 0px 0px 5px rgba(255, 255, 255, 1),
-               0px 0px 10px rgba(255, 255, 255, 1),
-			   0px 0px 15px rgba(255, 255, 255, 1),
-			   0px 0px 20px rgb(24, 255, 236),
-			   0px 0px 30px rgb(24, 255, 255),
-			   0px 0px 40px rgb(24, 220, 255),
-			   0px 0px 55px rgb(24, 247, 255),
-			   0px 0px 75px rgb(24, 209, 255);
+    0px 0px 10px rgba(255, 255, 255, 1), 0px 0px 15px rgba(255, 255, 255, 1),
+    0px 0px 20px rgb(24, 255, 236), 0px 0px 30px rgb(24, 255, 255),
+    0px 0px 40px rgb(24, 220, 255), 0px 0px 55px rgb(24, 247, 255),
+    0px 0px 75px rgb(24, 209, 255);
 }
 
 .signup-button {
@@ -88,13 +90,10 @@ ul {
   cursor: pointer;
   font-weight: 500;
   text-shadow: 0px 0px 5px rgba(255, 255, 255, 1),
-               0px 0px 10px rgba(255, 255, 255, 1),
-			   0px 0px 15px rgba(255, 255, 255, 1),
-			   0px 0px 20px rgb(24, 255, 236),
-			   0px 0px 30px rgb(24, 255, 255),
-			   0px 0px 40px rgb(24, 220, 255),
-			   0px 0px 55px rgb(24, 247, 255),
-			   0px 0px 75px rgb(24, 209, 255);
+    0px 0px 10px rgba(255, 255, 255, 1), 0px 0px 15px rgba(255, 255, 255, 1),
+    0px 0px 20px rgb(24, 255, 236), 0px 0px 30px rgb(24, 255, 255),
+    0px 0px 40px rgb(24, 220, 255), 0px 0px 55px rgb(24, 247, 255),
+    0px 0px 75px rgb(24, 209, 255);
 }
 
 .logout-button {
@@ -105,6 +104,11 @@ ul {
   color: rgb(248, 248, 248);
   cursor: pointer;
   font-weight: 700;
+  text-shadow: 0px 0px 5px rgba(255, 255, 255, 1),
+    0px 0px 10px rgba(255, 255, 255, 1), 0px 0px 15px rgba(255, 255, 255, 1),
+    0px 0px 20px rgb(24, 255, 236), 0px 0px 30px rgb(24, 255, 255),
+    0px 0px 40px rgb(24, 220, 255), 0px 0px 55px rgb(24, 247, 255),
+    0px 0px 75px rgb(24, 209, 255);
 }
 
 .inputs,
@@ -112,4 +116,23 @@ ul {
   background: transparent;
   border: transparent;
 }
-// --------------------------------
+
+.user {
+  color: black;
+  font-size: 1.15em;
+  font-weight: 700;
+  text-shadow: 0px 0px 5px rgba(255, 255, 255, 1),
+    0px 0px 10px rgba(255, 255, 255, 1), 0px 0px 15px rgba(255, 255, 255, 1),
+    0px 0px 20px rgb(24, 255, 236), 0px 0px 30px rgb(24, 255, 255),
+    0px 0px 40px rgb(24, 220, 255), 0px 0px 55px rgb(24, 247, 255),
+    0px 0px 75px rgb(24, 209, 255);
+}
+
+
+.tasks-container h3 {
+  color: black;
+  letter-spacing: 2px;
+  font-size: 1.75em;
+  font-weight: 900;
+  font-family: 'Inspiration', cursive;
+}
