@@ -34,6 +34,7 @@
   padding-top: 2em;
   margin-left: 5em;
   margin-right: 5em;
+  justify-content: center;
 }
 
 //task box
@@ -135,6 +136,22 @@
   background-color: rgb(216, 75, 75);
   box-shadow: rgba(10, 0, 0, 0.507) 0px 30px 60px -12px inset,
     rgba(247, 3, 3, 0.808) 0px 18px 36px -18px inset;
+}
+
+//complete
+.complete-button {
+  border-radius: 0.3em;
+  border: transparent;
+  padding: 0.4em;
+  background-color: green;
+  cursor: pointer;
+  color: white;
+}
+
+.complete-button:hover {
+  background-color: rgb(9, 57, 234);
+  box-shadow: rgba(48, 112, 128, 0.507) 0px 30px 60px -12px inset,
+    rgb(44, 84, 171) 0px 18px 36px -18px inset;
 }
 
 //change category

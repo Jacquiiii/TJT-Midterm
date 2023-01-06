@@ -60,10 +60,11 @@ The solution? A smart, auto-categorizing todo list app which sorts the task into
 
 - Users can add tasks, delete tasks and change the category of a task
 - Tasks are auto categorized
-- Users can log in
 
 
 ## Future enhancements
 
-- Registration
-- User login expansion
+- Signup
+- User login
+- Edit button functionality
+- Links to each task (e.g. link to McDonalds to eat)
