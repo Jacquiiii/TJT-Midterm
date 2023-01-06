@@ -62,7 +62,7 @@ $(document).ready(function () {
   };
 
   const createTaskElement = function(task) {
-
+    //onchange="this.form.submit();"
     const $task = `
       <div class="task">
       <div class="task-content">
@@ -76,11 +76,11 @@ $(document).ready(function () {
           <button class="delete" value="${task.id}" >Delete</button>
         </form>
         <button class="change-category">Change Category
-        <form method="POST" action="/change">
+        <form class="changeform">
         <label for="changecategory">update:</label>
-        <select name="changecategory" onchange="this.form.submit();">
+        <select class="changebutton" name="changecategory">
         <option label="" disabled selected></option>
-        <option value="buy">Buy</option>
+        <option value="buy" data-other-value="${task.id}">Buy</option>
         <option value="read">Read</option>
         <option value="eat">Eat</option>
         <option value="watch">Watch</option>
@@ -124,6 +124,23 @@ $(document).ready(function () {
     // console.log("formdata test:", formData);
     $.post("/delete", formData, (data) => {
       console.log("delete data from /post eventlistener", data);
+      loadTasks();
+    });
+  });
+
+  $(document).on("change", ".changebutton", function (event) {
+    console.log("change on click test");
+    event.preventDefault();
+
+    const taskIdVal = $(".changeform input[type='hidden']").val();
+    const formData = { category: event.target.value, taskid: taskIdVal }
+    console.log("formdata test:", formData);
+    // const taskId = $(".changeform").attr("value");
+    // const taskId = $('input[name="taskid"]');
+
+    console.log("taskid test", taskIdVal)
+    $.post("/change", formData, (data) => {
+      console.log("change data from /post eventlistener", data);
       loadTasks();
     });
   });
