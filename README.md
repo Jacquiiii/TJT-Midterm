@@ -7,6 +7,8 @@ When you are recommended something it's not always easy to jot it down for later
 
 The solution? A smart, auto-categorizing todo list app which sorts the task into 4 categories: Watch, Read, Eat, and Buy. The user simply has to add the name of the thing, and it gets put into the correct list.
 
+ The majority of this single page application was created via group programming, however each of us was the star of the show for certain aspects: Tony - routing, Tammy - css/databases, Jacqui - api integration.
+
 ## Project Setup
 
 1. Create your own copy of this repo using the `Use This Template` button, ideally using the name of your project. The repo should be marked Public

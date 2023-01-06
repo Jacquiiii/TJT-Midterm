@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const taskQueries = require('../db/queries/tasks');
 
+// gets task data from the database by leveraging query function getTasks
 router.get('/', (req, res) => {
   taskQueries.getTasks()
     .then(tasks => {
@@ -13,9 +14,5 @@ router.get('/', (req, res) => {
         .json({ error: err.message });
     });
 });
-
-// router.post("/", function(req, res) {
-//   return console.log(res.body);
-// })
 
 module.exports = router;

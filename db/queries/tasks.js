@@ -7,5 +7,5 @@ const getTasks = () => {
       return data.rows;
     });
 };
-
+ 
 module.exports = { getTasks };
