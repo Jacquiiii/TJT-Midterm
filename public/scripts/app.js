@@ -92,7 +92,7 @@ $(document).ready(function () {
 
         <form method="POST" action="/complete" class=complete-form>
           <input type="hidden" name="taskid"/>
-          <button class="complete-button" type="submit" value="${task.id}">Complete</button>
+          <button class="complete-button" id="complete-id" type="submit" value="${task.id}">Complete</button>
         </form>
 
         <button class="change-category">Change Category
