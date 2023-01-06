@@ -109,7 +109,7 @@ app.post('/login', (req, res) => {
         // Set a cookie with the user's email
         res.cookie('email', req.body.email, { maxAge: 900000, httpOnly: true });
         // Send a response to the client
-        res.json({ data: data.name, loginSuccess: true });
+        res.json({ data: data.first_name, loginSuccess: true });
 
       } else {
         res.send({ message: 'Email does not exist', loginSuccess: false });
