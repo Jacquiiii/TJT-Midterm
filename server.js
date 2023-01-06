@@ -71,17 +71,22 @@ app.get('/', (req, res) => {
 
 
 app.post('/delete', function(req, res) {
-  console.log("delete test!");
+  // console.log("delete test!");
   console.log("delete req!", req.body);
   // console.log("delete res!", res);
+
   const value = [req.body.taskid]
   const deleteQuery = `
   DELETE FROM tasks WHERE id = $1;
   `
   db.query(deleteQuery, value)
+  // .then((result) => {
+  //   // res.json({status: 'success'});
+  //   res.redirect("/");
+  // })
   .then((result) => {
-    // res.json({status: 'success'});
-    res.redirect("/");
+    console.log(result.rows[0]);
+    res.json({status: 'success'}); // replaced previous redirect
   })
   .catch((err) => res.send(err));
 })
@@ -94,9 +99,14 @@ app.post('/change', (req, res) => {
   WHERE id = $2;
   `
   db.query(changeQuery, value)
+    // .then((result) => {
+    //   res.redirect("/");
+    // })
     .then((result) => {
-      res.redirect("/");
+      console.log(result.rows[0]);
+      res.json({status: 'success'}); // replaced previous redirect
     })
+    .catch((err) => res.send(err));
 })
 
 

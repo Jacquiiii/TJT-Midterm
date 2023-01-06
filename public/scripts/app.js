@@ -71,9 +71,9 @@ $(document).ready(function () {
       </div>
       <div class="task-buttons">
         <button class="edit">Edit</button>
-        <form method="POST" action="/delete">
-          <input type="hidden" name="taskid" value="${task.id}"/>
-          <button class="delete" type="submit">Delete</button>
+        <form class="deletebutton">
+          <input type="hidden" name="taskid" />
+          <button class="delete" value="${task.id}" >Delete</button>
         </form>
         <button class="change-category">Change Category
         <form method="POST" action="/change">
@@ -117,7 +117,16 @@ $(document).ready(function () {
   //       break;
   //   }
   // });
-
+  $(document).on("click", ".delete", function (event) {
+    console.log("delete onclick test");
+    event.preventDefault();
+    const formData = { taskid: event.target.value }
+    // console.log("formdata test:", formData);
+    $.post("/delete", formData, (data) => {
+      console.log("delete data from /post eventlistener", data);
+      loadTasks();
+    });
+  });
 
   // const taskContent = $(".new-task-input")
   // const convertedFormData = taskContent.serialize();
