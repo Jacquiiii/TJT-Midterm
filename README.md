@@ -61,10 +61,15 @@ The solution? A smart, auto-categorizing todo list app which sorts the task into
 - Users can add tasks, delete tasks and change the category of a task
 - Tasks are auto categorized
 
+## Final Product
+
+!["Main view"](https://github.com/Jacquiiii/TJT-Midterm/blob/master/docs/Main%20page.png)
+!["Login"](https://github.com/Jacquiiii/TJT-Midterm/blob/master/docs/Login.png)
+!["Change Category"](https://github.com/Jacquiiii/TJT-Midterm/blob/master/docs/Change%20category.png)
+!["Completed task"](https://github.com/Jacquiiii/TJT-Midterm/blob/master/docs/Completed%20tasks.png)
 
 ## Future enhancements
 
-- Signup
-- User login
+- Signup and login functionality
 - Edit button functionality
 - Links to each task (e.g. link to McDonalds to eat)
