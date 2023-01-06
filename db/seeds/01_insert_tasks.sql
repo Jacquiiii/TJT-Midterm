@@ -8,9 +8,9 @@
 -- (2,'watch','The Dark Knight', FALSE, NULL, NULL),
 -- (2,'eat','Sushi', FALSE, NULL, NULL);
 
-INSERT INTO tasks (category, description, completed, creation_date, completion_date)
-VALUES ('watch','The Dark Knight', FALSE, NULL, NULL)
-RETURNING *;
+-- INSERT INTO tasks (category, description, completed, creation_date, completion_date)
+-- VALUES ('watch','The Dark Knight', FALSE, NULL, NULL)
+-- RETURNING *;
 
 INSERT INTO tasks (category, description, completed, creation_date, completion_date)
 VALUES ('eat','Sushi', FALSE, NULL, NULL)
@@ -21,7 +21,19 @@ VALUES ('read','Atomic Habits', FALSE, NULL, NULL)
 RETURNING *;
 
 INSERT INTO tasks (category, description, completed, creation_date, completion_date)
+VALUES ('read','The 100', FALSE, NULL, NULL)
+RETURNING *;
+
+INSERT INTO tasks (category, description, completed, creation_date, completion_date)
 VALUES ('buy','Headphones', TRUE, NULL, NULL)
+RETURNING *;
+
+INSERT INTO tasks (category, description, completed, creation_date, completion_date)
+VALUES ('buy','Car', FALSE, NULL, NULL)
+RETURNING *;
+
+INSERT INTO tasks (category, description, completed, creation_date, completion_date)
+VALUES ('buy','Headphones', FALSE, NULL, NULL)
 RETURNING *;
 
 
