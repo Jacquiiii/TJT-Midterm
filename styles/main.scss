@@ -49,6 +49,7 @@
 
 .task:hover {
   box-shadow: rgb(3, 22, 43) 0px 20px 30px -10px;
+  transform: perspective(1000px) rotateX(10deg);
 }
 
 .text {
