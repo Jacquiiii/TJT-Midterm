@@ -86,6 +86,7 @@ app.post('/delete', function(req, res) {
   .catch((err) => res.send(err));
 })
 
+
 app.post('/change', (req, res) => {
   console.log("testing req.body", req.body);
   const value = [req.body.changecategory, req.body.taskid];
@@ -97,6 +98,23 @@ app.post('/change', (req, res) => {
     .then((result) => {
       res.redirect("/");
     })
+})
+
+// test for complete task
+app.post('/complete', function(req, res) {
+
+  console.log("testing' req.body", req.body);
+  const value = [true, req.body.taskid];
+  const completeQuery = `
+  UPDATE tasks SET completed = $1
+  WHERE id = $2;
+  `
+
+  db.query(completeQuery, value)
+    .then((result) => {
+      res.json({status: 'success'}); // replaced previous redirect
+    })
+    .catch((err) => res.send(err));
 })
 
 
