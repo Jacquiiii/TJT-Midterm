@@ -33,7 +33,7 @@ VALUES ('buy','Car', FALSE, NULL, NULL)
 RETURNING *;
 
 INSERT INTO tasks (category, description, completed, creation_date, completion_date)
-VALUES ('buy','Headphones', FALSE, NULL, NULL)
+VALUES ('buy','Watch', FALSE, NULL, NULL)
 RETURNING *;
 
 
