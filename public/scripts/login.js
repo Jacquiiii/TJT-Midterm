@@ -34,7 +34,7 @@ $(document).ready(function () {
 
       // if server sends back loginSuccess as true, name and logout button are displayed on the page
       if (response.loginSuccess) {
-        $('.user').text(email);
+        $('.user').text(response.data);
         $('.header-right').hide();
         $('.header-right-logged-in').show();
       }
