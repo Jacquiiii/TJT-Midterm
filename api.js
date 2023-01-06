@@ -2,7 +2,7 @@
 const language = require('@google-cloud/language');
 
 
-// finds category based on predefined text. if no positive result is found, getCategory can be used to call APIs.
+// finds category based on predefined text. if no positive result is found, quickstart can be used to call APIs.
 const categoryCheck = (text) => {
   text = text.toLowerCase();
   const arr = text.split(' ');
@@ -16,6 +16,7 @@ const categoryCheck = (text) => {
 }
 
 
+// API call to google natural language to find category if categoryCheck was unsuccessful
 async function quickstart(text) {
 
   // creates a client

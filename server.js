@@ -1,7 +1,7 @@
 // future enhancements: move routes into separate files, utilize cookies required below
 
 
-/*--------------------- Require and web server config code -------------------------*/
+/*---------------------- Require and web server config code -------------------------*/
 
 
 // load .env data into process.env
@@ -37,7 +37,7 @@ const tasksRoutes = require('./routes/tasks');
 app.use('/tasks', tasksRoutes); // displays tasks from database
 
 
-/*---------------- Route code (see routes folder for other routes) -----------------*/
+/*----------------- Route code (see routes folder for other routes) -----------------*/
 
 
 // renders main page for single page application
@@ -175,7 +175,7 @@ app.post('/logout', (req, res) => {
 });
 
 
-/*------------------------------ Server listen code -------------------------------*/
+/*------------------------------- Server listen code --------------------------------*/
 
 
 app.listen(PORT, () => {
