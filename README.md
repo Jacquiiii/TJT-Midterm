@@ -62,6 +62,7 @@ The solution? A smart, auto-categorizing todo list app which sorts the task into
 
 - Users can add tasks, delete tasks and change the category of a task
 - Tasks are auto categorized
+- Partial login functionality (only email is validated)
 
 ## Final Product
 
@@ -72,6 +73,8 @@ The solution? A smart, auto-categorizing todo list app which sorts the task into
 
 ## Future enhancements
 
-- Signup and login functionality
+- Signup functionality
+- Complete login functionality, including the ability to only display tasks created by signed in user
 - Edit button functionality
+- Filter options for task categories
 - Links to each task (e.g. link to McDonalds to eat)

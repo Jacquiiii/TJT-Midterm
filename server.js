@@ -1,7 +1,7 @@
-// future enhancements: move routes into separate files, utilize cookies required below
+// future enhancements: move routes into separate files, potentially utilize cookies in other scenarios, secure login route that validates password and not only email
 
 
-/*---------------------- Require and web server config code -------------------------*/
+/*-------------------- Require and web server config code ----------------------*/
 
 
 // load .env data into process.env
@@ -37,7 +37,7 @@ const tasksRoutes = require('./routes/tasks');
 app.use('/tasks', tasksRoutes); // displays tasks from database
 
 
-/*----------------- Route code (see routes folder for other routes) -----------------*/
+/*-------------- Route code (see routes folder for other routes) ---------------*/
 
 
 // renders main page for single page application
@@ -150,6 +150,8 @@ app.post('/complete', function(req, res) {
 
 // receives post request to /login from client side form submit event
 app.post('/login', (req, res) => {
+
+  // validation done only by checking email agaist user in database
   userEmailQueries.getUserByEmail(req.body.email)
     .then(data => {
 
@@ -175,7 +177,7 @@ app.post('/logout', (req, res) => {
 });
 
 
-/*------------------------------- Server listen code --------------------------------*/
+/*---------------------------- Server listen code ------------------------------*/
 
 
 app.listen(PORT, () => {
