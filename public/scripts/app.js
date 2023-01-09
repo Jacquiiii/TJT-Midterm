@@ -90,13 +90,13 @@ $(document).ready(function () {
         <label for="changecategory">update:</label>
         <select class="changebutton" name="changecategory">
         <option label="" disabled selected></option>
-        <option value="buy" data-other-value="${task.id}">Buy</option>
+        <option value="buy">Buy</option>
         <option value="read">Read</option>
         <option value="eat">Eat</option>
         <option value="watch">Watch</option>
         </select>
         <input type="hidden" name="taskid" value="${task.id}"></input>
-
+        </form>
       </div>
       </div>
       `;
@@ -130,8 +130,9 @@ $(document).ready(function () {
   $(document).on("change", ".changebutton", function (event) {
     event.preventDefault();
     const taskIdVal = $(".changeform input[type='hidden']").val();
+    console.log("change taskIdVal check:", taskIdVal)
     const formData = { category: event.target.value, taskid: taskIdVal }
-
+    console.log("change formData check:", formData)
     $.post("/change", formData, (data) => {
       console.log("change data from /post eventlistener", data);
       loadTasks();

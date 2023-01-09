@@ -118,6 +118,8 @@ app.post('/delete', function(req, res) {
 // receives post request to /change from client side click event for changing the category on a task
 app.post('/change', (req, res) => {
   const value = [req.body.category, req.body.taskid];
+  console.log("req body check", req.body)
+  console.log("/change post value check", value)
   const changeQuery = `
   UPDATE tasks SET category = $1
   WHERE id = $2;
